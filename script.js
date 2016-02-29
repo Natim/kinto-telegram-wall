@@ -1,14 +1,14 @@
 function main() {
   // Kinto server url
-  var server = "https://kinto.dev.mozaws.net/v1";
+  var server = "https://kinto-ota.dev.mozaws.net/v1";
   // Basic Authentication
   var headers = {};
   // Bucket id
-  var bucket = "kintobot";
+  var bucket = "dadounets";
   // Collection id
   var collection = "wall";
   // Pusher app key
-  var pusher_key = "01a9feaaf9ebb120d1a6";
+  var pusher_key = "39768ef7e21c15af9c6e";
   // Max initial number of records
   var limit = 100;
   // Refresh rate
