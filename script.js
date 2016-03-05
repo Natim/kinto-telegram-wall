@@ -12,7 +12,7 @@ function main() {
   // Max initial number of records
   var limit = 100;
   // Refresh rate
-  var refreshRate = 10000;
+  var refreshRate = 7000;
 
   var contents = [];
   var queue = [];
@@ -26,6 +26,7 @@ function main() {
    .then(function (result) {
      if (result.data) {
        contents = result.data;
+       queue = contents.slice(1);
        showContent(contents[0]);
      }
    })
@@ -46,6 +47,7 @@ function main() {
     queue = newrecords.concat(queue);
     if (wasEmpty) {
        showContent(contents[0]);
+       queue = queue.slice(1);
     }
   });
   channel.bind('delete', function(data) {
@@ -103,6 +105,9 @@ function main() {
 
     // Auto-refresh.
     setTimeout(showContent.bind(undefined, record), refreshRate);
+
+    // Toggle progress bar.
+    document.querySelector("#progress").classList.toggle('run');
   }
 }
 
