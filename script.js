@@ -8,7 +8,7 @@ function main() {
   // Collection id
   var collection = "wall";
   // Pusher app key
-  var pusher_key = "39768ef7e21c15af9c6e";
+  var pusher_key = "176aefcb03ed8e6a7ee5";
   // Max initial number of records
   var limit = 100;
   // Refresh rate
