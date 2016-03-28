@@ -63,7 +63,11 @@ function main() {
       var location = isURL ? record.text : record.attachment.location;
       if (isURL || /^image/.test(record.attachment.mimetype)) {
         var image = new Image();
-        image.src = location;
+        if (location.indexOf('attachment') == -1) {
+          image.src = 'https://kinto-ota.dev.mozaws.net/attachments/' + location;
+        } else {
+          image.src = location;
+        }
       }
     }
   }
@@ -91,7 +95,14 @@ function main() {
       }
       var tpl = document.getElementById(template);
       entry = tpl.content.cloneNode(true);
-      entry.querySelector(".attachment").setAttribute(attr, location);
+      var url;
+      if (location.indexOf('attachment') == -1) {
+        url = 'https://kinto-ota.dev.mozaws.net/attachments/' + location;
+      } else {
+        url = location;
+      }
+
+      entry.querySelector(".attachment").setAttribute(attr, url);
     }
     else {
       var tpl = document.getElementById("text-tpl");
